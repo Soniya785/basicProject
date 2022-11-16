@@ -10,11 +10,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { ToastrComponent } from './basicTask/toastr/toastr.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RegFormComponent } from './basicTask/reg-form/reg-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToastrComponent
+    ToastrComponent,
+    RegFormComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     BrowserAnimationsModule,
     CommonModule,
-    ToastrModule
+    ToastrModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
