@@ -1,3 +1,4 @@
+import { DatabaseServiceService } from './_service/database.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -30,10 +31,10 @@ import { RegFormComponent } from './basicTask/reg-form/reg-form.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CommonModule,
+    CommonModule, 
     ToastrModule,
   ],
-  providers: [],
+  providers: [DatabaseServiceService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
