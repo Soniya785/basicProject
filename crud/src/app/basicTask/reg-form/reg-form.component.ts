@@ -1,5 +1,8 @@
+import { UserData } from './../../_service/users.interface';
+import { UserService } from './../../_service/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DatabaseServiceService } from 'src/app/_service/database.service';
 
 @Component({
   selector: 'app-reg-form',
@@ -9,10 +12,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegFormComponent implements OnInit {
 // registForm:FormGroup= new FormGroup({});
 registForm: FormGroup;
-  constructor(private fb : FormBuilder) { }
+users : UserData[] = [];
+  constructor(private fb : FormBuilder, private _userService : UserService, private _dataBaseService : DatabaseServiceService) { }
 
   ngOnInit(){
     this.setFormState();
+    this.getAllUsers()
   }
 setFormState(){
   this.registForm = this.fb.group({
@@ -33,10 +38,16 @@ onSubmit()
 if(this.registForm.invalid){
 return;
 }
-
 }
 
 onCancel(){
   this.registForm.reset();
+}
+getAllUsers(){
+this._userService.getUsers().subscribe((res: UserData[] )=> {
+  // debugger;
+  console.log(res);
+this.users = res;
+})
 }
 }

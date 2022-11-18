@@ -12,6 +12,7 @@ import { ToastrComponent } from './basicTask/toastr/toastr.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegFormComponent } from './basicTask/reg-form/reg-form.component';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,9 @@ import { RegFormComponent } from './basicTask/reg-form/reg-form.component';
     BrowserAnimationsModule,
     CommonModule, 
     ToastrModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientInMemoryWebApiModule.forRoot(DatabaseServiceService)
   ],
   providers: [DatabaseServiceService ],
   bootstrap: [AppComponent]
