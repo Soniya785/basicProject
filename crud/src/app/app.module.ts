@@ -1,4 +1,4 @@
-import { MaterialModule } from './material.module';
+
 import { DatabaseServiceService } from './_service/database.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -37,7 +37,6 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     ToastrModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule,
     HttpClientInMemoryWebApiModule.forRoot(DatabaseServiceService)
   ],
   providers: [DatabaseServiceService ],
