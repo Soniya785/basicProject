@@ -12,7 +12,7 @@
                         <option value="Ms">Ms</option>
                     </select>
                 </div>
-<!-- check -->
+
                 <div class="form-group col-5">
                     <label>First Name</label>
                     <input type="text" class="form-control" formControlName="firstName">
@@ -87,6 +87,8 @@
                         <td>{{user.lname}}</td>
                         <td>{{user.dob}}</td>
                         <td>{{user.email}}</td>
+                        <td class="fa fa-edit" style="color: green;" (click)="editClick(user.id)">Edit</td>
+                        <td class="fa fa-edit" style="color: red;"(click)="deleteClick(user.id)">Delete</td>
                     </tr>
                     
                 </table>

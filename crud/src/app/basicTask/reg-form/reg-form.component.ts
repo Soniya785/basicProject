@@ -3,6 +3,8 @@ import { UserService } from './../../_service/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatabaseServiceService } from 'src/app/_service/database.service';
+import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reg-form',
@@ -13,7 +15,7 @@ export class RegFormComponent implements OnInit {
 // registForm:FormGroup= new FormGroup({});
 registForm: FormGroup;
 users : UserData[] = [];
-  constructor(private fb : FormBuilder, private _userService : UserService, private _dataBaseService : DatabaseServiceService) { }
+  constructor(private fb : FormBuilder, private toastr: ToastrService, private _userService : UserService, private _dataBaseService : DatabaseServiceService) { }
 
   ngOnInit(){
     this.setFormState();
@@ -48,6 +50,42 @@ this._userService.getUsers().subscribe((res: UserData[] )=> {
   // debugger;
   console.log(res);
 this.users = res;
+})
+}
+editClick(userId : number){
+alert(userId) //For Knowning ID
+}
+
+deleteClick(userId : number){
+  // alert(userId) //For Knowning ID
+// this._userService.deleteUser(userId).subscribe(res => {
+//   this.getAllUsers();
+//   this.toastr.success('Delete Successfully', 'Toastr fun!');
+// });
+
+Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    this._userService.deleteUser(userId).subscribe(res => {
+  this.getAllUsers();
+  this.toastr.success('Delete Successfully', 'Toastr fun!');
+
+});
+    // // Swal.fire(
+    // //   'Deleted!',
+    // //   'Your file has been deleted.',
+    // //   'success'
+    // )
+  this.toastr.success('Delete Successfully', 'Toastr fun!');
+
+  }
 })
 }
 }
